@@ -12,4 +12,5 @@ echo "Running script with root privileges..."
 
 # Example setup commands
 apt-get update -y
-apt-get install -y vim git
+apt-get upgrade
+apt-get install -y
