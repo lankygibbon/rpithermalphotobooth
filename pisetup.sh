@@ -25,6 +25,10 @@ apt-get install -y gcc libcups2-dev libcupsimage2-dev
 TAR_FILE="Star_CUPS_Driver-3.16.0_linux.tar.gz"
 EXTRACTED_DIR="Star_CUPS_Driver-3.16.0"
 
+# Get the directory of the script to use absolute paths
+TAR_PATH="$SCRIPT_DIR/$TAR_FILE"
+EXTRACTED_PATH="$SCRIPT_DIR/$EXTRACTED_DIR"
+
 # Check if the extracted directory already exists
 if [ -d "$EXTRACTED_PATH" ]; then
     echo "The directory $EXTRACTED_DIR already exists. Skipping extraction."
