@@ -23,7 +23,7 @@ apt-get install -y gcc libcups2-dev libcupsimage2-dev
 
 # Define variables for printer driver install
 TAR_FILE="Star_CUPS_Driver-3.16.0_linux.tar.gz"
-EXTRACTED_DIR="Star_CUPS_Driver-3.16.0"
+EXTRACTED_DIR="Star_CUPS_Driver-3.16.0_linux"
 
 # Get the directory of the script to use absolute paths
 TAR_PATH="$SCRIPT_DIR/$TAR_FILE"
