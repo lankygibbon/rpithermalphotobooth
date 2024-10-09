@@ -30,6 +30,7 @@ TAR_PATH="$SCRIPT_DIR/$TAR_FILE"
 EXTRACTED_PATH="$SCRIPT_DIR/$EXTRACTED_DIR"
 
 # Check if the extracted directory already exists
+echo "Checking if directory exists: $EXTRACTED_PATH"
 if [ -d "$EXTRACTED_PATH" ]; then
     echo "The directory $EXTRACTED_DIR already exists. Skipping extraction."
 else
