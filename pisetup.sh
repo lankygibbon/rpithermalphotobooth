@@ -29,6 +29,12 @@ EXTRACTED_DIR="Star_CUPS_Driver-3.16.0_linux"
 TAR_PATH="$SCRIPT_DIR/$TAR_FILE"
 EXTRACTED_PATH="$SCRIPT_DIR/$EXTRACTED_DIR"
 
+SOURCE_TAR_FILE="$EXTRACTED_PATH/SourceCode/Star_CUPS_Driver-src-3.16.0.tar.gz"
+SOURCE_EXTRACTED_PATH="$EXTRACTED_PATH/SourceCode/starcupsdrv"
+
+
+
+
 # Check if the extracted directory already exists
 echo "Checking if directory exists: $EXTRACTED_PATH"
 if [ -d "$EXTRACTED_PATH" ]; then
@@ -43,6 +49,20 @@ else
         echo "$TAR_FILE not found in $SCRIPT_DIR. Exiting..."
         exit 1
     fi
+fi
+
+if [ -d "$EXTRACTED_PATH" ]; then
+    if [ -f "$SOURCE_TAR_FILE" ]; then
+        echo "File found: $SOURCE_TAR_FILE. Extracting..."
+        tar xzvf "$SOURCE_TAR_FILE"
+        echo "Extraction complete!"
+    else
+        echo "$SOURCE_TAR_FILE not found. Exiting..."
+        exit 1
+    fi
+else
+    echo "$SOURCE_TAR_FILE not found in $EXTRACTED_PATH. Exiting..."
+    exit 1
 fi
 
 
