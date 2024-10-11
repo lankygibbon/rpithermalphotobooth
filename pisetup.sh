@@ -51,6 +51,25 @@ extract_if_not_exists "$TAR_PATH" "$EXTRACTED_PATH"
 # Extract the source tar file if needed
 extract_if_not_exists "$SOURCE_TAR_FILE" "$SOURCE_EXTRACTED_PATH"
 
-
+# Check if Makefile exists in the extracted source directory
+if [ -f "$SOURCE_EXTRACTED_PATH/makefile" ]; then
+    echo "Makefile found. Running 'make' and 'make install'..."
+    
+    # Navigate to the directory containing the Makefile
+    cd "$SOURCE_EXTRACTED_PATH"
+    
+    # Run make and make install
+    make
+    if [ $? -eq 0 ]; then
+        echo "Make completed successfully."
+        sudo make install
+    else
+        echo "Make failed. Exiting."
+        exit 1
+    fi
+else
+    echo "Makefile not found in $SOURCE_EXTRACTED_PATH. Exiting."
+    exit 1
+fi
 
 
