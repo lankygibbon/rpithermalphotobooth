@@ -105,6 +105,8 @@ else
   exit 1
 fi
 
+# Installing Printer
+echo "Installing printer"
 PRINTER_URI=$(lpinfo -v | grep TSP143 | awk '{print $2}')
 lpadmin -p Star_TSP143 -v "$PRINTER_URI" -P /usr/share/cups/model/star/tsp143.ppd -E
 lpadmin -d Star_TSP143
