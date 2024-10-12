@@ -36,6 +36,8 @@ apt-get install -y gcc libcups2-dev libcupsimage2-dev cups
 cp /etc/cups/cupsd.conf /etc/cups/cupsd.conf.original
 chmod a-w /etc/cups/cupsd.conf.original
 
+sudo systemctl enable cups
+
 # Get the directory of the script to use absolute paths
 TAR_PATH="$SCRIPT_DIR/Star_CUPS_Driver-3.16.0_linux.tar.gz"
 EXTRACTED_PATH="$SCRIPT_DIR/Star_CUPS_Driver-3.16.0_linux"
@@ -102,3 +104,7 @@ else
   echo "Makefile not found in $SOURCE_EXTRACTED_PATH. Exiting."
   exit 1
 fi
+
+PRINTER_URI=$(lpinfo -v | grep TSP143 | awk '{print $2}')
+lpadmin -p Star_TSP143 -v "$PRINTER_URI" -P /usr/share/cups/model/star/tsp143.ppd -E
+lpadmin -d Star_TSP143
